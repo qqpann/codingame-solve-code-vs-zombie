@@ -1,0 +1,1 @@
+# codingame-solve-game-template
