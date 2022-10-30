@@ -28,13 +28,16 @@ while True:
         zombie_id, zombie_x, zombie_y, zombie_xnext, zombie_ynext = [
             int(j) for j in input().split()
         ]
-        zombies.append((zombie_id, zombie_x, zombie_y))
+        zombies.append((zombie_id, zombie_x, zombie_y, zombie_xnext, zombie_ynext))
 
     def time_for_ash_to_reach(_a: Sequence[int]):
         return dist((x, y), (_a[1], _a[2])) / 1000
 
     def time_for_z_to_reach(_a: Sequence[int]):
-        return min([dist((_a[1], _a[2]), (z[1], z[2])) for z in zombies]) / 400
+        _z = list(filter(lambda z: (_a[1], _a[2]) == (z[3], z[4]), zombies))
+        if len(_z) == 0:
+            _z = zombies
+        return min([dist((_a[1], _a[2]), (z[1], z[2])) for z in _z]) / 400
 
     save_l = list(filter(lambda h: h[0] == save, humans))
     if save == -1 or len(save_l) == 0:
