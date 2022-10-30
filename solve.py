@@ -43,7 +43,7 @@ while True:
         )
         if len(savable_humans) == 0:
             savable_humans = humans[:1]
-        savable_humans = sorted(savable_humans, key=lambda h: time_for_ash_to_reach(h))
+        savable_humans = sorted(savable_humans, key=lambda h: time_for_z_to_reach(h))
         id, x, y = savable_humans[0]
         save = id
     else:
